@@ -1,0 +1,63 @@
+<h2>Lab Six</h2>
+
+<div class="app-ctl-global">
+  <button type="button" class="app-cl-btn app-cl-primary" (click)="addSection()">
+    + Add Section
+  </button>
+</div>
+
+<main class="app-cmp-main-container">
+  @for (sec of sections; track sec; let i = $index) {
+    <article class="app-cmp-section">
+      <header>
+        <button type="button" class="app-cl-btn app-cl-primary" (click)="addNumber(sec)">
+          + Input
+        </button>
+
+        <b>Section {{ i + 1 }}</b>
+
+        <button type="button" class="app-cl-btn app-cl-warn app-cl-icon" (click)="removeSection(i)">
+          Delete
+        </button>
+      </header>
+
+      <div class="app-cl-column-container">
+        <section class="app-cmp-number-list">
+          @for (num of sec.numbers; track num; let j = $index) {
+            <div class="app-cmp-number">
+              <label>
+                <b
+                  >Number <span class="app-title-number">{{ j + 1 }}</span></b
+                >
+                <input
+                  type="number"
+                  #inp
+                  [value]="num.value"
+                  (input)="num.value = inp.valueAsNumber"
+                />
+              </label>
+              <button
+                type="button"
+                class="app-cl-btn app-cl-warn app-cl-icon"
+                (click)="removeNumber(sec, j)"
+              >
+                X
+              </button>
+            </div>
+          }
+        </section>
+
+        <section>
+          <div class="app-cmp-number">
+            <label>
+              <b>Result</b>
+              <output class="app-cl-number">
+                {{ getSectionTotal(sec).toLocaleString() }}
+              </output>
+            </label>
+          </div>
+        </section>
+      </div>
+    </article>
+  }
+</main>

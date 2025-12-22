@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { LabSix } from './lab-six/lab-six';
 import { TrialOne } from './trial-one/trial-one';
 import { TrialThree } from './trial-three/trial-three';
 import { TrialTwo } from './trial-two/trial-two';
@@ -11,4 +12,5 @@ export const routes: Routes = [
   { path: 'trial-one', component: TrialOne },
   { path: 'trial-two', component: TrialTwo },
   { path: 'trial-three', component: TrialThree },
+  { path: 'lab-six', component: LabSix },
 ];
