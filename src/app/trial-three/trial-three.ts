@@ -30,6 +30,9 @@ export class TrialThree {
   }
 
   protected getResult(): string {
-    return this.items.map((item) => item.value).join(', ');
+    return this.items
+      .map((item) => item.value)
+      .reduce((result, value) => result + value)
+      .toLocaleString();
   }
 }
