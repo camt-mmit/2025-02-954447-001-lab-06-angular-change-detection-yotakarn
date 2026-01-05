@@ -16,7 +16,12 @@
 
         <b>Section {{ i + 1 }}</b>
 
-        <button type="button" class="app-cl-btn app-cl-warn app-cl-icon" (click)="removeSection(i)">
+        <button
+          type="button"
+          class="app-cl-btn app-cl-warn app-cl-icon"
+          (click)="removeSection(i)"
+          [disabled]="sections.length <= 1"
+        >
           Delete
         </button>
       </header>
@@ -40,6 +45,7 @@
                 type="button"
                 class="app-cl-btn app-cl-warn app-cl-icon"
                 (click)="removeNumber(sec, j)"
+                [disabled]="sec.numbers.length <= 1"
               >
                 X
               </button>
