@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 interface NumberItem {
   value: number;
@@ -15,15 +15,23 @@ interface SectionItem {
   templateUrl: './lab-six.html',
   styleUrl: './lab-six.scss',
 })
-export class LabSix {
+export class LabSix implements OnInit {
   protected sections: SectionItem[] = [];
 
+  ngOnInit() {
+    this.addSection();
+  }
+
   protected addSection(): void {
-    this.sections.push({ numbers: [] });
+    this.sections.push({
+      numbers: [{ value: 0 }],
+    });
   }
 
   protected removeSection(index: number): void {
-    this.sections.splice(index, 1);
+    if (this.sections.length > 1) {
+      this.sections.splice(index, 1);
+    }
   }
 
   protected addNumber(section: SectionItem): void {
@@ -31,7 +39,9 @@ export class LabSix {
   }
 
   protected removeNumber(section: SectionItem, index: number): void {
-    section.numbers.splice(index, 1);
+    if (section.numbers.length > 1) {
+      section.numbers.splice(index, 1);
+    }
   }
 
   protected getSectionTotal(section: SectionItem): number {
